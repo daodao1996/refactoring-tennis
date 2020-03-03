@@ -61,7 +61,7 @@ public class TennisGame1 implements TennisGame {
   }
 
   private String getWinner() {
-    return player1Point - player2Point > 0 ? player1Name : player2Name;
+    return player1Point > player2Point ? player1Name : player2Name;
   }
 
   private String getPointDescription(int point) {
