@@ -22,25 +22,32 @@ public class TennisGame1 implements TennisGame {
 
   public String getScore() {
 
-    if (player1Point == player2Point) {
-      if (player1Point > 2) {
-        return "Deuce";
-      } else {
-        return getPointDescription(player1Point) + "-All";
-      }
+    if (isDraw()) {
+      return getScoreWhenDraw();
     } else if (player1Point >= 4 || player2Point >= 4) {
       int minusResult = Math.abs(player1Point - player2Point);
-      String winner = getWinner();
 
       if (minusResult == 1) {
-        return "Advantage " + winner;
+        return "Advantage " + getWinner();
       } else {
-        return "Win for " + winner;
+        return "Win for " + getWinner();
       }
     } else {
       return getPointDescription(player1Point) + "-" + getPointDescription(player2Point);
     }
 
+  }
+
+  private String getScoreWhenDraw() {
+    if (player1Point > 2) {
+      return "Deuce";
+    } else {
+      return getPointDescription(player1Point) + "-All";
+    }
+  }
+
+  private boolean isDraw() {
+    return player1Point == player2Point;
   }
 
   private String getWinner() {
