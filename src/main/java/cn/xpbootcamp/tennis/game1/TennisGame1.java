@@ -14,6 +14,12 @@ public class TennisGame1 implements TennisGame {
         this.player2Name = player2Name;
     }
 
+    @Override
+    public void setPlayerPoint(int p1Point, int p2Point) {
+        this.m_score1 = p1Point;
+        this.m_score2 = p2Point;
+    }
+
     public void wonPoint(String playerName) {
         if ("player1".equals(playerName))
             m_score1 += 1;
@@ -25,21 +31,7 @@ public class TennisGame1 implements TennisGame {
         StringBuilder score = new StringBuilder();
         int tempScore = 0;
         if (m_score1 == m_score2) {
-            switch (m_score1) {
-                case 0:
-                    score = new StringBuilder("Love-All");
-                    break;
-                case 1:
-                    score = new StringBuilder("Fifteen-All");
-                    break;
-                case 2:
-                    score = new StringBuilder("Thirty-All");
-                    break;
-                default:
-                    score = new StringBuilder("Deuce");
-                    break;
-
-            }
+            getScoreDescription(m_score1, score);
         } else if (m_score1 >= 4 || m_score2 >= 4) {
             int minusResult = m_score1 - m_score2;
             if (minusResult == 1) score = new StringBuilder("Advantage player1");
@@ -70,5 +62,22 @@ public class TennisGame1 implements TennisGame {
             }
         }
         return score.toString();
+    }
+
+    private void getScoreDescription(int score, StringBuilder description) {
+        switch (score) {
+            case 0:
+                description.append("Love-All");
+                break;
+            case 1:
+                description.append("Fifteen-All");
+                break;
+            case 2:
+                description.append("Thirty-All");
+                break;
+            default:
+                description.append("Deuce");
+                break;
+        }
     }
 }

@@ -16,6 +16,12 @@ public class TennisGame2 implements TennisGame {
         this.player2Name = player2Name;
     }
 
+    @Override
+    public void setPlayerPoint(int p1Point, int p2Point) {
+        this.P1point = p1Point;
+        this.P2point = p2Point;
+    }
+
     public String getScore() {
         String score = "";
         if (P1point == P2point && P1point < 4) {
