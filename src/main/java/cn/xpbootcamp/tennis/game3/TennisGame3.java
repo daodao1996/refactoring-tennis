@@ -22,9 +22,12 @@ public class TennisGame3 implements TennisGame {
 
   public String getScore() {
     String[] description = new String[]{"Love", "Fifteen", "Thirty", "Forty"};
+
     if (isHighScore()) {
-      if (isDraw())
+      if (isDraw()){
         return "Deuce";
+      }
+
       return Math.abs(player1Point - player2Point) == 1 ?
               "Advantage " + getWinner() :
               "Win for " + getWinner();
