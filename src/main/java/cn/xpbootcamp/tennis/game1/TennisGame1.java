@@ -21,24 +21,30 @@ public class TennisGame1 implements TennisGame {
   }
 
   public String getScore() {
-    StringBuilder score = new StringBuilder();
 
     if (m_score1 == m_score2) {
-      if (m_score1 > 2)
+      if (m_score1 > 2) {
         return "Deuce";
-      else {
+      } else {
         return getPointDescription(m_score1) + "-All";
       }
     } else if (m_score1 >= 4 || m_score2 >= 4) {
-      int minusResult = m_score1 - m_score2;
-      if (minusResult == 1) score = new StringBuilder("Advantage player1");
-      else if (minusResult == -1) score = new StringBuilder("Advantage player2");
-      else if (minusResult >= 2) score = new StringBuilder("Win for player1");
-      else score = new StringBuilder("Win for player2");
+      int minusResult = Math.abs(m_score1 - m_score2);
+      String winner = getWinner();
+
+      if (minusResult == 1) {
+        return "Advantage " + winner;
+      } else {
+        return "Win for " + winner;
+      }
     } else {
       return getPointDescription(m_score1) + "-" + getPointDescription(m_score2);
     }
-    return score.toString();
+
+  }
+
+  private String getWinner() {
+    return m_score1 - m_score2 > 0 ? player1Name : player2Name;
   }
 
   private String getPointDescription(int point) {
