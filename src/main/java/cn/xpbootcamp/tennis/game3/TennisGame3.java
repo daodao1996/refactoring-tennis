@@ -21,15 +21,17 @@ public class TennisGame3 implements TennisGame {
   }
 
   public String getScore() {
-    String score;
     String[] description = new String[]{"Love", "Fifteen", "Thirty", "Forty"};
     if (isHighScore()) {
       if (isDraw())
         return "Deuce";
-      return (Math.abs(player1Point - player2Point) == 1) ? "Advantage " + getWinner() : "Win for " + getWinner();
+      return Math.abs(player1Point - player2Point) == 1 ?
+              "Advantage " + getWinner() :
+              "Win for " + getWinner();
     } else {
-      score = description[player1Point];
-      return (isDraw()) ? score + "-All" : score + "-" + description[player2Point];
+      return isDraw() ?
+              description[player1Point] + "-All" :
+              description[player1Point] + "-" + description[player2Point];
     }
   }
 
