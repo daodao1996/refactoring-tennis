@@ -4,8 +4,8 @@ import cn.xpbootcamp.tennis.TennisGame;
 
 public class TennisGame1 implements TennisGame {
 
-  private int m_score1 = 0;
-  private int m_score2 = 0;
+  private int player1Point = 0;
+  private int player2Point = 0;
   private String player1Name;
   private String player2Name;
 
@@ -16,20 +16,20 @@ public class TennisGame1 implements TennisGame {
 
   @Override
   public void setPlayerPoint(int p1Point, int p2Point) {
-    this.m_score1 = p1Point;
-    this.m_score2 = p2Point;
+    this.player1Point = p1Point;
+    this.player2Point = p2Point;
   }
 
   public String getScore() {
 
-    if (m_score1 == m_score2) {
-      if (m_score1 > 2) {
+    if (player1Point == player2Point) {
+      if (player1Point > 2) {
         return "Deuce";
       } else {
-        return getPointDescription(m_score1) + "-All";
+        return getPointDescription(player1Point) + "-All";
       }
-    } else if (m_score1 >= 4 || m_score2 >= 4) {
-      int minusResult = Math.abs(m_score1 - m_score2);
+    } else if (player1Point >= 4 || player2Point >= 4) {
+      int minusResult = Math.abs(player1Point - player2Point);
       String winner = getWinner();
 
       if (minusResult == 1) {
@@ -38,13 +38,13 @@ public class TennisGame1 implements TennisGame {
         return "Win for " + winner;
       }
     } else {
-      return getPointDescription(m_score1) + "-" + getPointDescription(m_score2);
+      return getPointDescription(player1Point) + "-" + getPointDescription(player2Point);
     }
 
   }
 
   private String getWinner() {
-    return m_score1 - m_score2 > 0 ? player1Name : player2Name;
+    return player1Point - player2Point > 0 ? player1Name : player2Name;
   }
 
   private String getPointDescription(int point) {
