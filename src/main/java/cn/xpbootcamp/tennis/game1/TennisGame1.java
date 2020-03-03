@@ -20,13 +20,6 @@ public class TennisGame1 implements TennisGame {
         this.m_score2 = p2Point;
     }
 
-    public void wonPoint(String playerName) {
-        if ("player1".equals(playerName))
-            m_score1 += 1;
-        else
-            m_score2 += 1;
-    }
-
     public String getScore() {
         StringBuilder score = new StringBuilder();
         int tempScore = 0;
