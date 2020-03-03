@@ -24,18 +24,26 @@ public class TennisGame1 implements TennisGame {
 
     if (isDraw()) {
       return getScoreWhenDraw();
-    } else if (player1Point >= 4 || player2Point >= 4) {
-      int minusResult = Math.abs(player1Point - player2Point);
-
-      if (minusResult == 1) {
-        return "Advantage " + getWinner();
-      } else {
-        return "Win for " + getWinner();
-      }
+    } else if (isHighPoint()) {
+      return getScoreWhenHighPoint();
     } else {
       return getPointDescription(player1Point) + "-" + getPointDescription(player2Point);
     }
 
+  }
+
+  private String getScoreWhenHighPoint() {
+    int minusResult = Math.abs(player1Point - player2Point);
+
+    if (minusResult == 1) {
+      return "Advantage " + getWinner();
+    } else {
+      return "Win for " + getWinner();
+    }
+  }
+
+  private boolean isHighPoint() {
+    return player1Point >= 4 || player2Point >= 4;
   }
 
   private String getScoreWhenDraw() {
