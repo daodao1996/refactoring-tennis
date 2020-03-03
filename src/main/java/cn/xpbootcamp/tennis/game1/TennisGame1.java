@@ -15,9 +15,9 @@ public class TennisGame1 implements TennisGame {
   }
 
   @Override
-  public void setPlayerPoint(int p1Point, int p2Point) {
-    this.player1Point = p1Point;
-    this.player2Point = p2Point;
+  public void setPlayerPoint(int player1Point, int player2Point) {
+    this.player1Point = player1Point;
+    this.player2Point = player2Point;
   }
 
   public String getScore() {

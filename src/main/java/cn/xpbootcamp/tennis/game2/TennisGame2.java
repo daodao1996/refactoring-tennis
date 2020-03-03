@@ -3,11 +3,11 @@ package cn.xpbootcamp.tennis.game2;
 import cn.xpbootcamp.tennis.TennisGame;
 
 public class TennisGame2 implements TennisGame {
-    public int P1point = 0;
-    public int P2point = 0;
+    public int player1Point = 0;
+    public int player2Point = 0;
 
-    public String P1res = "";
-    public String P2res = "";
+    public String play1Result = "";
+    public String play2Result = "";
     private String player1Name;
     private String player2Name;
 
@@ -17,83 +17,83 @@ public class TennisGame2 implements TennisGame {
     }
 
     @Override
-    public void setPlayerPoint(int p1Point, int p2Point) {
-        this.P1point = p1Point;
-        this.P2point = p2Point;
+    public void setPlayerPoint(int player1Point, int player2Point) {
+        this.player1Point = player1Point;
+        this.player2Point = player2Point;
     }
 
     public String getScore() {
         String score = "";
-        if (P1point == P2point && P1point < 4) {
-            if (P1point == 0)
+        if (player1Point == player2Point && player1Point < 4) {
+            if (player1Point == 0)
                 score = "Love";
-            if (P1point == 1)
+            if (player1Point == 1)
                 score = "Fifteen";
-            if (P1point == 2)
+            if (player1Point == 2)
                 score = "Thirty";
             score += "-All";
         }
-        if (P1point == P2point && P1point >= 3)
+        if (player1Point == player2Point && player1Point >= 3)
             score = "Deuce";
 
-        if (P1point > 0 && P2point == 0) {
-            if (P1point == 1)
-                P1res = "Fifteen";
-            if (P1point == 2)
-                P1res = "Thirty";
-            if (P1point == 3)
-                P1res = "Forty";
+        if (player1Point > 0 && player2Point == 0) {
+            if (player1Point == 1)
+                play1Result = "Fifteen";
+            if (player1Point == 2)
+                play1Result = "Thirty";
+            if (player1Point == 3)
+                play1Result = "Forty";
 
-            P2res = "Love";
-            score = P1res + "-" + P2res;
+            play2Result = "Love";
+            score = play1Result + "-" + play2Result;
         }
-        if (P2point > 0 && P1point == 0) {
-            if (P2point == 1)
-                P2res = "Fifteen";
-            if (P2point == 2)
-                P2res = "Thirty";
-            if (P2point == 3)
-                P2res = "Forty";
+        if (player2Point > 0 && player1Point == 0) {
+            if (player2Point == 1)
+                play2Result = "Fifteen";
+            if (player2Point == 2)
+                play2Result = "Thirty";
+            if (player2Point == 3)
+                play2Result = "Forty";
 
-            P1res = "Love";
-            score = P1res + "-" + P2res;
-        }
-
-        if (P1point > P2point && P1point < 4) {
-            if (P1point == 2)
-                P1res = "Thirty";
-            if (P1point == 3)
-                P1res = "Forty";
-            if (P2point == 1)
-                P2res = "Fifteen";
-            if (P2point == 2)
-                P2res = "Thirty";
-            score = P1res + "-" + P2res;
-        }
-        if (P2point > P1point && P2point < 4) {
-            if (P2point == 2)
-                P2res = "Thirty";
-            if (P2point == 3)
-                P2res = "Forty";
-            if (P1point == 1)
-                P1res = "Fifteen";
-            if (P1point == 2)
-                P1res = "Thirty";
-            score = P1res + "-" + P2res;
+            play1Result = "Love";
+            score = play1Result + "-" + play2Result;
         }
 
-        if (P1point > P2point && P2point >= 3) {
+        if (player1Point > player2Point && player1Point < 4) {
+            if (player1Point == 2)
+                play1Result = "Thirty";
+            if (player1Point == 3)
+                play1Result = "Forty";
+            if (player2Point == 1)
+                play2Result = "Fifteen";
+            if (player2Point == 2)
+                play2Result = "Thirty";
+            score = play1Result + "-" + play2Result;
+        }
+        if (player2Point > player1Point && player2Point < 4) {
+            if (player2Point == 2)
+                play2Result = "Thirty";
+            if (player2Point == 3)
+                play2Result = "Forty";
+            if (player1Point == 1)
+                play1Result = "Fifteen";
+            if (player1Point == 2)
+                play1Result = "Thirty";
+            score = play1Result + "-" + play2Result;
+        }
+
+        if (player1Point > player2Point && player2Point >= 3) {
             score = "Advantage player1";
         }
 
-        if (P2point > P1point && P1point >= 3) {
+        if (player2Point > player1Point && player1Point >= 3) {
             score = "Advantage player2";
         }
 
-        if (P1point >= 4 && P2point >= 0 && (P1point - P2point) >= 2) {
+        if (player1Point >= 4 && player2Point >= 0 && (player1Point - player2Point) >= 2) {
             score = "Win for player1";
         }
-        if (P2point >= 4 && P1point >= 0 && (P2point - P1point) >= 2) {
+        if (player2Point >= 4 && player1Point >= 0 && (player2Point - player1Point) >= 2) {
             score = "Win for player2";
         }
         return score;
