@@ -34,12 +34,14 @@ public class TennisGame1 implements TennisGame {
 
   private String getScoreWhenHighPoint() {
     int minusResult = Math.abs(player1Point - player2Point);
+    String score = "";
 
     if (minusResult == 1) {
-      return "Advantage " + getWinner();
+      score += "Advantage ";
     } else {
-      return "Win for " + getWinner();
+      score += "Win for ";
     }
+    return score + getWinner();
   }
 
   private boolean isHighPoint() {
